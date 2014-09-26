@@ -81,8 +81,6 @@ def parse_filename(filename):
   return student_id, assignment, zip_type
 
 
-# mkdir students
-# mkdir -p students/21123113
 def create_folder(student_id, assignment, msg_date):
   student_directory = os.path.join(STUDENTS_DIR, student_id)
   if os.path.exists(student_directory):
