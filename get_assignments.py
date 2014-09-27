@@ -181,11 +181,8 @@ def get_email_content(last_uid=None):
                            account_settings.PASSWORD)
   server.select_folder(account_settings.FOLDER_NAME, readonly=True)
   print 'Getting message IDs (IDs local to folder).'
-  if last_uid is None:
-    folder_msg_ids = server.search()
-  else:
-    criteria = '%d:*' % ((last_uid + 1),)
-    folder_msg_ids = server.search(criteria=criteria)
+  folder_msg_ids = server.search()
+  if last_uid is not None:
     # In the case that `last_uid` is the max, this will return [last_uid],
     # when we actually want [].
     folder_msg_ids = [msg_id for msg_id in folder_msg_ids
